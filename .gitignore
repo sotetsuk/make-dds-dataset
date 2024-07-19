@@ -1,2 +1,7 @@
 venv
 *.npy
+__pycache__/
+data/*
+ddstable.py
+libdds.so
+tmp.tsv
