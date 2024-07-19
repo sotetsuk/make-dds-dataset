@@ -51,9 +51,13 @@ def main(num):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("seed", type=int)
+    parser.add_argument("--seed", type=int, default=None)
     parser.add_argument("--num", type=int, default=10_000_000)
     args = parser.parse_args()
+
+    if args.seed is None:
+        seed = np.random.randint(0, 2**32 - 1)
+        print(f"Randomly generated seed: {seed}", file=sys.stderr)
 
     np.random.seed(seed=args.seed)
     main(args.num)
