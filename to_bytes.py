@@ -28,18 +28,19 @@ def to_binary(x) -> np.ndarray:
 
 
 def make_hash_table(
-    csv_path: str,
+    tsv_path: str,
 ) -> Tuple[np.ndarray, np.ndarray]:
     """make key and value of hash from samples
     [start, end)
     """
     keys = []
     values = []
-    with open(csv_path, "r") as f:
+    with open(tsv_path, "r") as f:
         for line in tqdm(f):
-            l = line.split(",")
-            keys.append(_pbn_to_key(l[0]))
-            values.append(to_value(l[1:]))
+            pbn, dds = line.split("\t")
+            dds = dds.split(',')
+            keys.append(_pbn_to_key(pbn))
+            values.append(to_value(dds))
     return np.array(keys, dtype=np.int32), np.array(values, dtype=np.int32)
 
 
@@ -89,7 +90,7 @@ def main(fname):
 
 
 def test():
-    fname = "test.csv"
+    fname = "test.tsv"
     main(fname)
     
     expected_keys = np.int32([[24494087, 53250751, 4828063 , 22552142],
