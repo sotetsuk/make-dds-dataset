@@ -52,8 +52,8 @@ def main(num):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("seed", type=int)
-    parser.add_argument("num", type=int, default=10_000_000)
+    parser.add_argument("--num", type=int, default=10_000_000)
     args = parser.parse_args()
 
     np.random.seed(seed=args.seed)
-    main()
+    main(args.num)
