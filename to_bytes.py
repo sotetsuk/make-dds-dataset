@@ -30,9 +30,6 @@ def to_binary(x) -> np.ndarray:
 def make_hash_table(
     tsv_path: str,
 ) -> Tuple[np.ndarray, np.ndarray]:
-    """make key and value of hash from samples
-    [start, end)
-    """
     keys = []
     values = []
     with open(tsv_path, "r") as f:
