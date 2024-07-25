@@ -37,10 +37,12 @@ def make_hash_table(
             x = line.split(",")
             pbn, dds = x[0], x[1:]
             try:
-                keys.append(_pbn_to_key(pbn))
-                values.append(to_value(dds))
+                k = _pbn_to_key(pbn)
+                v = to_value(dds)
             except ValueError:
                 continue  # skip header
+            keys.append(k)
+            values.append(v)
     return np.array(keys, dtype=np.int32), np.array(values, dtype=np.int32)
 
 
