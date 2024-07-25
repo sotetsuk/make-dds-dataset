@@ -59,7 +59,7 @@ def main(num):
     for i in tqdm(range(num)):
         pbn = random_to_pbn()
         dds = to_dds(pbn)
-        print(pbn + "\t" + dds, flush=True)
+        print(pbn + "," + dds, flush=True)
 
 
 if __name__ == '__main__':

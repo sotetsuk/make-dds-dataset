@@ -37,8 +37,8 @@ def make_hash_table(
     values = []
     with open(tsv_path, "r") as f:
         for line in tqdm(f):
-            pbn, dds = line.split("\t")
-            dds = dds.split(',')
+            x = line.split(",")
+            pbn, dds = x[0], x[1:]
             keys.append(_pbn_to_key(pbn))
             values.append(to_value(dds))
     return np.array(keys, dtype=np.int32), np.array(values, dtype=np.int32)
@@ -111,10 +111,10 @@ def test():
  
 
 if __name__ == '__main__':
-    test()
-    # import sys
-    # fname = sys.argv[1]
-    # main(fname)
+    # test()
+    import sys
+    fname = sys.argv[1]
+    main(fname)
     
 
 
