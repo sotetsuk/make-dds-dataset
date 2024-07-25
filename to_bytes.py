@@ -36,8 +36,11 @@ def make_hash_table(
         for line in tqdm(f):
             x = line.split(",")
             pbn, dds = x[0], x[1:]
-            keys.append(_pbn_to_key(pbn))
-            values.append(to_value(dds))
+            try:
+                keys.append(_pbn_to_key(pbn))
+                values.append(to_value(dds))
+            except ValueError:
+                continue  # skip header
     return np.array(keys, dtype=np.int32), np.array(values, dtype=np.int32)
 
 
